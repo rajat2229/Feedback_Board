@@ -1,4 +1,4 @@
-const DB_URL = "https://feedbackboard-6f084-default-rtdb.firebaseio.com"; 
+const DB_URL = "https://feed-backboard-default-rtdb.firebaseio.com/feedback.json";
 
 function App() {
   const [feedbacks, setFeedbacks] = React.useState([]);
@@ -33,12 +33,13 @@ function App() {
   };
 
   const deleteFeedback = (id) => {
-    fetch(`https://feedbackboard-6f084-default-rtdb.firebaseio.com${id}.json`, {
+    fetch(`https://feed-backboard-default-rtdb.firebaseio.com/feedback/${id}.json`, {
       method: 'DELETE'
     }).then(() => {
       setFeedbacks(prev => prev.filter(item => item.id !== id));
     });
   };
+  
 
   return (
     <div className="container">
