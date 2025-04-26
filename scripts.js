@@ -26,9 +26,10 @@ function App() {
       body: JSON.stringify(newFeedback),
     })
       .then(res => res.json())
-      .then(() => {
+      .then((data) => {
+        const newEntry = { id: data.name, ...newFeedback };
+        setFeedbacks(prev => [...prev, newEntry]);
         alert("Feedback submitted!");
-        location.reload(); 
       });
   };
 
@@ -39,11 +40,14 @@ function App() {
       setFeedbacks(prev => prev.filter(item => item.id !== id));
     });
   };
-  
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+  };
 
   return (
     <div className="container">
-      <ThemeToggle theme={theme} setTheme={setTheme} />
+      <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
       <FeedbackForm onSubmit={addFeedback} />
       <FeedbackList feedbacks={feedbacks} onDelete={deleteFeedback} />
     </div>
@@ -101,10 +105,15 @@ function FeedbackItem({ data, onDelete }) {
   );
 }
 
-function ThemeToggle({ theme, setTheme }) {
+function ThemeToggle({ theme, toggleTheme }) {
   return (
-    <button onClick={() => setTheme(prev => prev === 'light' ? 'dark' : 'light')}>
-      Toggle Theme ({theme})
+    <button className="theme-toggle" onClick={toggleTheme}>
+      <img 
+        src={theme === 'light' 
+          ? 'https://cdn-icons-png.flaticon.com/512/869/869869.png'  
+          : 'https://cdn-icons-png.flaticon.com/512/869/869869.png'}  
+        alt="Toggle Theme"
+      />
     </button>
   );
 }

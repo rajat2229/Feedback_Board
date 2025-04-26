@@ -1,92 +1,115 @@
-/* Base Theme Styles */
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    transition: background 0.3s ease, color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.4s ease, color 0.4s ease;
   }
   
   body.light {
-    background: #f9f9f9;
+    background: #f0f8ff;
     color: #333;
   }
   
   body.dark {
-    background: #121212;
-    color: #eee;
+    background: #1f1f1f;
+    color: #f1f1f1;
   }
   
-  /* Main container */
   .container {
     display: grid;
     grid-template-rows: auto auto 1fr;
-    gap: 1rem;
-    padding: 1rem;
+    gap: 1.5rem;
+    padding: 1.5rem;
   }
   
-  /* Form Styling */
   .form {
     display: grid;
-    gap: 10px;
-    background: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
-    padding: 1rem;
-    border-radius: 8px;
+    gap: 12px;
+    background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
   
   .form input,
   .form textarea {
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #888;
   }
   
   .form button {
-    background: #333;
+    background: #0066cc;
     color: white;
-    padding: 10px;
+    padding: 12px;
+    font-weight: bold;
     cursor: pointer;
+    border: none;
+    border-radius: 6px;
     transition: background 0.3s;
   }
   
   .form button:hover {
-    background: #555;
+    background: #004c99;
   }
   
-  /* List and Card Styling */
   .list {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem;
   }
   
   .card {
-    background: white;
-    border-radius: 8px;
-    padding: 1rem;
-    flex: 1 1 250px;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1.2rem;
+    flex: 1 1 280px;
     position: relative;
-    transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s, transform 0.3s;
   }
   
   .card:hover {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
   }
   
   .card button {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: crimson;
+    background: #ff4d4f;
     color: white;
     border: none;
-    border-radius: 4px;
-    padding: 5px;
+    border-radius: 50%;
+    padding: 8px 10px;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  
+  .card button:hover {
+    background: #d9363e;
   }
   
   button:focus {
-    outline: 2px solid #000;
+    outline: 2px solid #333;
   }
   
-  /* Responsive */
+  .theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  
+  .theme-toggle img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+  }
+  
+  .theme-toggle img:hover {
+    transform: rotate(20deg);
+  }
+  
   @media (max-width: 600px) {
     .form, .list {
       grid-template-columns: 1fr;
